@@ -48,16 +48,16 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };*/
-jQuery.noConflict();
+$jQ = jQuery.noConflict();
 /*
-jQuery(function(){
+$jQ(function(){
     loadTweets();
     alert('twwweeeets men');
 });
 */
 var api = {}
 , app = {};
-jQuery(function(){
+$jQ(function(){
     (function(){
         this.printData = function(){
             console.log(dump_data.responseText);
@@ -76,25 +76,24 @@ jQuery(function(){
             , length = matches.length
             , dreplace;
             for(var i=0;i<length;i++){
-                console.log(matches[i])
-                dreplace = matches[i].replace(regLink,"src='img/dump/jQuery2.jQuery3'");
+                //console.log(matches[i])
+                dreplace = matches[i].replace(regLink,"src='img/dump/$2.$3'");
                 api.data = api.data.replace(matches[i],dreplace);
-                console.log(dreplace);
+                //console.log(dreplace);
             }
             
         }
 
     }).apply(api);
 
-    //dump_data = jQuery.getJSON(url);
+    //dump_data = $jQ.getJSON(url);
     
-	jQuery.ajax({
+	$jQ.ajax({
 		url: 'http://www.entutele.com/programacion/todos/',
 		crossDomain : true,
-        dataType: 'jsonp',
 		success : function(data){
             //console.log(data);
-            alert('pues si me lanza esta mauser');
+            //alert('pues si me lanza esta mauser');
             api.data = data;
             app.init();
 		},
@@ -103,18 +102,19 @@ jQuery(function(){
         }
 	});
 
-    alert('yes men repeat');
+    //alert('yes men repeat');
 });
 
 (function(){
-    var jQuerydata;
+    var $data;
     this.init = function(){
         api.parserData();
         api.parserData();//que pedos! mierda esta.
         api.changeLinks();
-        jQuerydata = jQuery(api.data);
-        jQuery('.wrap').append(jQuerydata);
-        console.log(jQuerydata);
+        $jQ('.load').addClass('hidden');
+        $data = $jQ(api.data);
+        $jQ('.wrap').append($data);
+        //console.log($jQdata);
     };
 
 }).apply(app);
