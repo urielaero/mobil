@@ -91,6 +91,7 @@ jQuery(function(){
 	jQuery.ajax({
 		url: 'http://www.entutele.com/programacion/todos/',
 		crossDomain : true,
+        dataType: 'jsonp',
 		success : function(data){
             //console.log(data);
             alert('pues si me lanza esta mauser');
